@@ -1,5 +1,6 @@
 module Hamster
   # @private
+  # Implements a trie using 5-bit dispatching
   class Trie
     def self.[](pairs)
       result = self.new(0)
@@ -205,6 +206,7 @@ module Hamster
 
     private
 
+    # Shift hash by @significant_bits, and discard all but the last 5 bits
     def index_for(key)
       (key.hash.abs >> @significant_bits) & 31
     end
